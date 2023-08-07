@@ -1,25 +1,31 @@
-CleanPatientData.py <br /> 
-DownloadS3.py <br /> 
+CleanPatientData.py <br />
 Developer: Dean Hutton<br /> 
 Date: 09/18/21
 
 # Summary
-This guide illustrates how to run the CleanPatientData.py program for clean sensive data from a log file.
-Direct_reports.py was built with Python 3.7 so it is recommended to use that version of the interpreter 
-while running.
+This guide illustrates how to run the CleanPatientData.py program for cleaning sensitive patient data from a log file. CleanPatientData.py 
+was built with Python 3.7, so it is recommended to use that version of the interpreter when executing the program. The 
+program will:
+1. Connect to an AWS S3 bucket (credentials are  masked)
+   * You can comment this part of the program out and read in `patients.log` if desired
+2. Download `patients.log` file from AWS S3
+3. Create a new log file `patients-CLEANED.log` that does not have any sensitive information in it
+4. Upload `patients-CLEANED.log` file to AWS s3
+5. Complete
+
+# Assumptions
+- `DOB` and `DATE_OF_BIRTH` identify the dates of birth
 
 # Setup and Usage
 1. Setup and install a Python 3.7 Virtual Environment (VE). If you are unsure of how to do this see [here](http://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv) 
-2. Clone the repo ```git clone https://github.com/jellyDean/direct_reports.git ```
-3. Open a terminal and CD in to your VE ``` cd /Users/deanhutton/workdir/Personal/VE/2.7.10/bin ```  
-4. Activate the Virtual Environment ``` . activate.fish ```
-5. Install the above Required Python Libraries via PIP
-6. Navigate to the repo ``` cd /Users/deanhutton/workdir/Personal/Repos/direct_reports ```
-7. Run the script by executing ``` python direct_reports.py -i employee_info.csv -rd 2011-03-24 ``` where ­i is the location of your input file and ­rd is the run date
+2. Clone the repo ```git clone https://github.com/jellyDean/CleanPatientData.git ```
+3. Navigate to the repo ``` cd /Users/deanhutton/workdir/Personal/Repos/CleanPatientData ```
+4. Run the script by executing ``` python CleanPatientData.py ```
 
 
-# Running Tests
-1. Follow steps 1-5 in the Setup and Usage section above
-2. Navigate to the tests directory ``` cd /Users/deanhutton/workdir/Personal/Repos/direct_reports/tests ```
-3. Enter ``` nosetests ``` in terminal and push enter
-4. 5 Unit tests will run
+# TODO
+- Hide AWS keys - Done
+- Add unit tests
+- Document the methods and code better
+- Add a correct logger
+- Add better exception handling
